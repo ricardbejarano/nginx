@@ -64,8 +64,6 @@ RUN apt update && \
 
 WORKDIR /tmp/nginx
 RUN apt install -y gcc g++ make && \
-    sed -i -E "s/\"Server: (.*) CRLF/\"Server: bejarano.io\" CRLF/" src/http/ngx_http_header_filter_module.c && \
-    sed -i -E 's/nginx[5] = "\\x84\\xaa\\x63\\x55\\xe7"/nginx[9] = "\\x88\\x8c\\xbd\\x7\\x60\\xea\\x3a\\xe6\\x3f"/' src/http/v2/ngx_http_v2_filter_module.c && \
     ./configure $NGINX_CONFIG && \
     make && \
     make install

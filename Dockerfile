@@ -66,7 +66,7 @@ RUN apt update && \
 WORKDIR /tmp/nginx
 RUN apt install -y gcc g++ make && \
     sed -i -E "s/\"Server: (.*) CRLF/\"Server: $NGINX_NAME\" CRLF/" src/http/ngx_http_header_filter_module.c && \
-    find /tmp/nginx -type f | xargs sed -i -E 's/server: (%s|%V|nginx)/server: $NGINX_NAME/g' && \
+    find /tmp/nginx -type f | xargs sed -i -E "s/server: (%s|%V|nginx)/server: $NGINX_NAME/g" && \
     ./configure $NGINX_CONFIG && \
     make && \
     make install

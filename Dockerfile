@@ -9,9 +9,9 @@ ARG OPENSSL_CHECKSUM="ebbfc844a8c8cc0ea5dc10b86c9ce97f401837f3fa08c17b2cdadc1182
 ARG ZLIB_VERSION="1.2.11"
 ARG ZLIB_CHECKSUM="c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1"
 
-ARG NGINX_NAME="engine x"
-ARG NGINX_VERSION="1.15.2"
-ARG NGINX_CHECKSUM="eeba09aecfbe8277ac33a5a2486ec2d6731739f3c1c701b42a0c3784af67ad90"
+ARG NGINX_NAME="bejarano.io"
+ARG NGINX_VERSION="1.15.3"
+ARG NGINX_CHECKSUM="9391fb91c3e2ebd040a4e3ac2b2f0893deb6232edc30a8e16fcc9c3fa9d6be85"
 ARG NGINX_CONFIG="\
     --sbin-path=/nginx \
     --conf-path=/etc/nginx/nginx.conf \
@@ -66,6 +66,7 @@ RUN apt update && \
 WORKDIR /tmp/nginx
 RUN apt install -y gcc g++ make && \
     sed -i -E "s/\"Server: (.*) CRLF/\"Server: $NGINX_NAME\" CRLF/" src/http/ngx_http_header_filter_module.c && \
+    find /tmp/nginx -type f | xargs sed -i -E 's/server: (%s|%V|nginx)/server: $NGINX_NAME/g' && \
     ./configure $NGINX_CONFIG && \
     make && \
     make install

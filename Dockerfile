@@ -3,14 +3,14 @@ FROM debian:stretch AS build
 ARG PCRE_VERSION="8.42"
 ARG PCRE_CHECKSUM="69acbc2fbdefb955d42a4c606dfde800c2885711d2979e356c0636efde9ec3b5"
 
-ARG OPENSSL_VERSION="1.1.1"
-ARG OPENSSL_CHECKSUM="2836875a0f89c03d0fdf483941512613a50cfb421d6fd94b9f41d7279d586a3d"
+ARG OPENSSL_VERSION="1.1.1a"
+ARG OPENSSL_CHECKSUM="fc20130f8b7cbd2fb918b2f14e2f429e109c31ddd0fb38fc5d71d9ffed3f9f41"
 
 ARG ZLIB_VERSION="1.2.11"
 ARG ZLIB_CHECKSUM="c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1"
 
-ARG NGINX_VERSION="1.15.7"
-ARG NGINX_CHECKSUM="8f22ea2f6c0e0a221b6ddc02b6428a3ff708e2ad55f9361102b1c9f4142bdf93"
+ARG NGINX_VERSION="1.15.8"
+ARG NGINX_CHECKSUM="a8bdafbca87eb99813ae4fcac1ad0875bf725ce19eb265d28268c309b2b40787"
 ARG NGINX_CONFIG="\
     --sbin-path=/nginx \
     --conf-path=/etc/nginx/nginx.conf \
@@ -58,12 +58,10 @@ RUN if [ "$NGINX_CHECKSUM" != "$(sha256sum /tmp/nginx.tar.gz | awk '{print $1}')
     tar xf /tmp/nginx.tar.gz && \
     mv /tmp/nginx-$NGINX_VERSION /tmp/nginx
 
-RUN apt update && \
-    apt install -y git && \
-    git clone --recurse-submodules https://github.com/google/ngx_brotli.git /tmp/ngx_brotli
-
 WORKDIR /tmp/nginx
-RUN apt install -y gcc g++ make && \
+RUN apt update && \
+    apt install -y git gcc g++ make && \
+    git clone --recurse-submodules https://github.com/google/ngx_brotli.git /tmp/ngx_brotli && \
     ./configure $NGINX_CONFIG && \
     make && \
     make install

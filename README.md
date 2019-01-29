@@ -17,6 +17,7 @@ Available at [`ricardbejarano/nginx`](https://hub.docker.com/r/ricardbejarano/ng
 ## Volumes
 
 Mount your **configuration** on the container's `/etc/nginx` folder.
+
 Mount your **content** on the container's `/etc/nginx/html` folder.
 
 

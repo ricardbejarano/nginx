@@ -1,5 +1,0 @@
-services:
-  - docker
-script:
-  - docker build -t nginx .
-  - docker run nginx /nginx -v

@@ -23,4 +23,4 @@ Mount your **content** on the container's `/etc/nginx/html` folder.
 
 ## License
 
-See [LICENSE](LICENSE).
+See [LICENSE](https://github.com/ricardbejarano/nginx/blob/master/LICENSE).

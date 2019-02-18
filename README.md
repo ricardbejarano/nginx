@@ -14,13 +14,6 @@ Available at [`ricardbejarano/nginx`](https://hub.docker.com/r/ricardbejarano/ng
 * Included [brotli](https://github.com/google/brotli) compression support (with [ngx_brotli](https://github.com/google/ngx_brotli))
 
 
-## Volumes
-
-Mount your **configuration** on the container's `/etc/nginx` folder.
-
-Mount your **web content** on the container's `/etc/nginx/html` folder.
-
-
 ## Filesystem
 
 The image's contents are:
@@ -41,6 +34,7 @@ The image's contents are:
 │       ├── ld-linux-x86-64.so.2
 │       ├── libc.so.6
 │       ├── libnss_files.so.2
+│       ├── libnss_dns.so.2
 │       └── libresolv.so.2
 ├── nginx
 └── tmp/

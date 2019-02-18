@@ -70,4 +70,6 @@ COPY --from=build /lib/x86_64-linux-gnu/ld-2.24.so /lib/x86_64-linux-gnu/ld-linu
 COPY --from=build /tmp/nginx/objs/nginx /nginx
 COPY --from=build /tmp/nginx/html /etc/nginx/html
 
+STOPSIGNAL SIGTERM
+
 ENTRYPOINT ["/nginx", "-g", "daemon off;"]

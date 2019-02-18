@@ -28,14 +28,14 @@ The image's contents are:
 ```
 /
 ├── etc/
-│   ├── group/
+│   ├── group
 │   ├── nginx/
 │   │   ├── html/
 │   │   │   ├── 50x.html
 │   │   │   └── index.html
 │   │   ├── mime.types
 │   │   └── nginx.conf
-│   └── passwd/
+│   └── passwd
 ├── lib/
 │   └── x86_64-linux-gnu/
 │       ├── ld-2.24.so

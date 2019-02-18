@@ -9,7 +9,7 @@ Available at [`ricardbejarano/nginx`](https://hub.docker.com/r/ricardbejarano/ng
 
 * Super tiny (only `18MB`)
 * Built from source, including libraries
-* Based on `scratch`, see [Filesystem](#Filesystem) for an exhaustive list of the image's contents
+* Based on `scratch`, see the [Filesystem](#Filesystem) section below for an exhaustive list of the image's contents
 * Included [TLS1.3](https://tools.ietf.org/html/rfc8446) protocol support (with [OpenSSL](https://www.openssl.org/))
 * Included [brotli](https://github.com/google/brotli) compression support (with [ngx_brotli](https://github.com/google/ngx_brotli))
 
@@ -43,7 +43,9 @@ The image's contents are:
 │       ├── libc-2.24.so
 │       ├── libc.so.6 → libc-2.24.so
 │       ├── libnss_files-2.24.so
-│       └── libnss_files.so.2 → libnss_files-2.24.so
+│       ├── libnss_files.so.2 → libnss_files-2.24.so
+│       ├── libresolv-2.24.so
+│       └── libresolv.so.2 → libresolv-2.24.so
 ├── nginx
 └── tmp/
 ```

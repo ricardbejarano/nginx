@@ -12,6 +12,8 @@ ARG OPENSSL_CHECKSUM="fc20130f8b7cbd2fb918b2f14e2f429e109c31ddd0fb38fc5d71d9ffed
 ARG NGINX_VERSION="1.15.8"
 ARG NGINX_CHECKSUM="a8bdafbca87eb99813ae4fcac1ad0875bf725ce19eb265d28268c309b2b40787"
 ARG NGINX_CONFIG="\
+    --with-cc-opt='-static' \
+    --with-ld-opt='-static' \
     --sbin-path=/nginx \
     --conf-path=/etc/nginx/nginx.conf \
     --pid-path=/tmp/nginx.pid \
@@ -57,11 +59,15 @@ RUN apt update && \
     make
 
 
-FROM gcr.io/distroless/base
+FROM scratch
 
+COPY rootfs /
+
+COPY --from=build /lib/x86_64-linux-gnu/ld-2.24.so /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 \
+                  /lib/x86_64-linux-gnu/libc-2.24.so /lib/x86_64-linux-gnu/libc.so.6 \
+                  /lib/x86_64-linux-gnu/libnss_files-2.24.so /lib/x86_64-linux-gnu/libnss_files.so.2 \
+                  /lib/x86_64-linux-gnu/
 COPY --from=build /tmp/nginx/objs/nginx /nginx
 COPY --from=build /tmp/nginx/html /etc/nginx/html
-
-COPY conf /etc/nginx
 
 ENTRYPOINT ["/nginx", "-g", "daemon off;"]

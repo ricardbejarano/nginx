@@ -7,7 +7,7 @@ Available at [`ricardbejarano/nginx`](https://hub.docker.com/r/ricardbejarano/ng
 
 ## Features
 
-* Super tiny (only `18MB`)
+* Super tiny (only `16.3MB`)
 * Built from source, including libraries
 * Based on `scratch`, see the [Filesystem](#Filesystem) section below for an exhaustive list of the image's contents
 * Included [TLS1.3](https://tools.ietf.org/html/rfc8446) protocol support (with [OpenSSL](https://www.openssl.org/))
@@ -38,14 +38,10 @@ The image's contents are:
 │   └── passwd
 ├── lib/
 │   └── x86_64-linux-gnu/
-│       ├── ld-2.24.so
-│       ├── ld-linux-x86-64.so.2 → ld-2.24.so
-│       ├── libc-2.24.so
-│       ├── libc.so.6 → libc-2.24.so
-│       ├── libnss_files-2.24.so
-│       ├── libnss_files.so.2 → libnss_files-2.24.so
-│       ├── libresolv-2.24.so
-│       └── libresolv.so.2 → libresolv-2.24.so
+│       ├── ld-linux-x86-64.so.2
+│       ├── libc.so.6
+│       ├── libnss_files.so.2
+│       └── libresolv.so.2
 ├── nginx
 └── tmp/
 ```

@@ -7,7 +7,7 @@ Available at [`ricardbejarano/nginx`](https://hub.docker.com/r/ricardbejarano/ng
 
 ## Features
 
-* Super tiny (only `16.3MB`)
+* Super tiny (only `13.7MB`)
 * Built from source, including libraries
 * Based on `scratch`, see the [Filesystem](#Filesystem) section below for an exhaustive list of the image's contents
 * Included [TLS1.3](https://tools.ietf.org/html/rfc8446) protocol support (with [OpenSSL](https://www.openssl.org/))

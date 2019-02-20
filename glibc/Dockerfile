@@ -70,7 +70,6 @@ COPY --from=build /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 \
                   /lib/x86_64-linux-gnu/libresolv.so.2 \
                   /lib/x86_64-linux-gnu/
 COPY --from=build /tmp/nginx/objs/nginx /nginx
-COPY --from=build /tmp/nginx/html /etc/nginx/html
 
 STOPSIGNAL SIGTERM
 

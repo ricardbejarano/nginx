@@ -49,6 +49,7 @@ Based on the [glibc](https://www.gnu.org/software/libc/) implementation of `libc
 │       └── libresolv.so.2
 ├── nginx
 └── tmp/
+    └── .keep
 ```
 
 ### `musl`

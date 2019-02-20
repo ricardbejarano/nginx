@@ -4,17 +4,18 @@
 
 Available at [`ricardbejarano/nginx`](https://hub.docker.com/r/ricardbejarano/nginx).
 
+## Tags
 
 [`1.15.8-glibc`, `1.15.8`, `glibc`, `latest` *(glibc/Dockerfile)*](https://github.com/ricardbejarano/nginx/blob/master/glibc/Dockerfile)
 
-[`1.15.8-musl`, `musl` *(glibc/Dockerfile)*](https://github.com/ricardbejarano/nginx/blob/master/musl/Dockerfile)
+[`1.15.8-musl`, `musl` *(musl/Dockerfile)*](https://github.com/ricardbejarano/nginx/blob/master/musl/Dockerfile)
 
 
 ## Features
 
-* Super tiny (`:glibc` is `16.4MB` and `:musl` is `15.6MB`)
+* Super tiny (`glibc`-based is `~16.4MB` and `musl`-based is `~15.6MB`)
 * Built from source, including libraries
-* Based on `scratch`, see the [Filesystem](#Filesystem) section below for an exhaustive list of the image's contents
+* Built from `scratch`, see the [Filesystem](#Filesystem) section below for an exhaustive list of the image's contents
 * Included [TLS1.3](https://tools.ietf.org/html/rfc8446) protocol support (with [OpenSSL](https://www.openssl.org/))
 * Included [brotli](https://github.com/google/brotli) compression support (with [ngx_brotli](https://github.com/google/ngx_brotli))
 * Reduced attack surface (no `bash`, no UNIX tools, no package manager...)

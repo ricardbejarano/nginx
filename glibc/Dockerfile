@@ -32,8 +32,7 @@ ARG NGINX_CONFIG="\
     --with-http_v2_module \
     --with-stream \
     --with-stream_ssl_module \
-    --with-threads \
-    --add-module=/tmp/ngx_brotli"
+    --with-threads"
 
 ADD https://ftp.pcre.org/pub/pcre/pcre-$PCRE_VERSION.tar.gz /tmp/pcre.tar.gz
 ADD https://www.openssl.org/source/openssl-$OPENSSL_VERSION.tar.gz /tmp/openssl.tar.gz
@@ -53,8 +52,7 @@ RUN if [ "$PCRE_CHECKSUM" != "$(sha256sum /tmp/pcre.tar.gz | awk '{print $1}')" 
 
 WORKDIR /tmp/nginx
 RUN apt update && \
-    apt install -y git gcc g++ make && \
-    git clone --recurse-submodules https://github.com/google/ngx_brotli.git /tmp/ngx_brotli && \
+    apt install -y gcc g++ make && \
     ./configure $NGINX_CONFIG && \
     make
 

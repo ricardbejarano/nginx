@@ -52,7 +52,7 @@ RUN if [ "$PCRE_CHECKSUM" != "$(sha256sum /tmp/pcre.tar.gz | awk '{print $1}')" 
 
 WORKDIR /tmp/nginx
 RUN apt update && \
-    apt install -y gcc g++ make && \
+    apt install -y git gcc g++ make && \
     ./configure $NGINX_CONFIG && \
     make
 

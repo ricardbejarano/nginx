@@ -49,7 +49,7 @@ RUN if [ "$PCRE_CHECKSUM" != "$(sha256sum /tmp/pcre.tar.gz | awk '{print $1}')" 
     mv /tmp/nginx-$NGINX_VERSION /tmp/nginx
 
 WORKDIR /tmp/nginx
-RUN apk add gcc g++ perl make linux-headers && \
+RUN apk add git gcc g++ perl make linux-headers && \
     ./configure $NGINX_CONFIG && \
     make
 

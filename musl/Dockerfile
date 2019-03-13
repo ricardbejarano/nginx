@@ -37,8 +37,8 @@ ADD https://www.openssl.org/source/openssl-$OPENSSL_VERSION.tar.gz /tmp/openssl.
 ADD https://zlib.net/zlib-$ZLIB_VERSION.tar.gz /tmp/zlib.tar.gz
 ADD https://nginx.org/download/nginx-$NGINX_VERSION.tar.gz /tmp/nginx.tar.gz
 
-WORKDIR /tmp
-RUN if [ "$PCRE_CHECKSUM" != "$(sha256sum /tmp/pcre.tar.gz | awk '{print $1}')" ]; then exit 1; fi && \
+RUN cd /tmp && \
+    if [ "$PCRE_CHECKSUM" != "$(sha256sum /tmp/pcre.tar.gz | awk '{print $1}')" ]; then exit 1; fi && \
     tar xf /tmp/pcre.tar.gz && \
     if [ "$ZLIB_CHECKSUM" != "$(sha256sum /tmp/zlib.tar.gz | awk '{print $1}')" ]; then exit 1; fi && \
     tar xf /tmp/zlib.tar.gz && \
@@ -48,8 +48,8 @@ RUN if [ "$PCRE_CHECKSUM" != "$(sha256sum /tmp/pcre.tar.gz | awk '{print $1}')" 
     tar xf /tmp/nginx.tar.gz && \
     mv /tmp/nginx-$NGINX_VERSION /tmp/nginx
 
-WORKDIR /tmp/nginx
-RUN apk add git gcc g++ perl make linux-headers && \
+RUN cd /tmp/nginx && \
+    apk add git gcc g++ perl make linux-headers && \
     ./configure $NGINX_CONFIG && \
     make
 

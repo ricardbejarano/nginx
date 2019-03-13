@@ -14,7 +14,7 @@ Available at [`ricardbejarano/nginx`](https://hub.docker.com/r/ricardbejarano/ng
 
 ## Features
 
-* Super tiny (`glibc`-based is `~16.4MB` and `musl`-based is `~15.6MB`)
+* Super tiny (`glibc`-based is `~13MB` and `musl`-based is `~15.6MB`)
 * Built from source, including libraries
 * Built from `scratch`, see the [Filesystem](#Filesystem) section below for an exhaustive list of the image's contents
 * Included [TLS1.3](https://tools.ietf.org/html/rfc8446) protocol support (with [OpenSSL](https://www.openssl.org/))
@@ -32,7 +32,7 @@ Based on the [glibc](https://www.gnu.org/software/libc/) implementation of `libc
 ```
 /
 ├── etc/
-│   ├── group
+│   ├── group/
 │   ├── nginx/
 │   │   ├── html/
 │   │   │   ├── 50x.html
@@ -42,11 +42,15 @@ Based on the [glibc](https://www.gnu.org/software/libc/) implementation of `libc
 │   └── passwd
 ├── lib/
 │   └── x86_64-linux-gnu/
-│       ├── ld-linux-x86-64.so.2
 │       ├── libc.so.6
-│       ├── libnss_files.so.2
+│       ├── libcrypt.so.1
+│       ├── libdl.so.2
 │       ├── libnss_dns.so.2
+│       ├── libnss_files.so.2
+│       ├── libpthread.so.0
 │       └── libresolv.so.2
+├── lib64/
+│   └── ld-linux-x86-64.so.2
 ├── nginx
 └── tmp/
     └── .keep

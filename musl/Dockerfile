@@ -26,8 +26,9 @@ ARG NGINX_CONFIG="\
     --with-openssl=/tmp/openssl-$OPENSSL_VERSION \
     --with-zlib=/tmp/zlib-$ZLIB_VERSION \
     --with-file-aio \
-    --with-http_ssl_module \
     --with-http_v2_module \
+    --with-http_ssl_module \
+    --with-http_stub_status_module \
     --with-stream \
     --with-stream_ssl_module \
     --with-threads"

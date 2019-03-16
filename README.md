@@ -14,7 +14,7 @@ Available at [`ricardbejarano/nginx`](https://hub.docker.com/r/ricardbejarano/ng
 
 ## Features
 
-* Super tiny (`glibc`-based is `~13MB` and `musl`-based is `~15.6MB`)
+* Super tiny (`glibc`-based is `~13MB` and `musl`-based is `~12.3MB`)
 * Built from source, including libraries
 * Built from `scratch`, see the [Filesystem](#Filesystem) section below for an exhaustive list of the image's contents
 * Included [TLS1.3](https://tools.ietf.org/html/rfc8446) protocol support (with [OpenSSL](https://www.openssl.org/))

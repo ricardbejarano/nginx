@@ -1,1 +1,1 @@
-root:x:0:
+nginx:*:100:nginx

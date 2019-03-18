@@ -21,6 +21,25 @@ Available at [`ricardbejarano/nginx`](https://hub.docker.com/r/ricardbejarano/ng
 * Reduced attack surface (no `bash`, no UNIX tools, no package manager...)
 
 
+## Building
+
+To build the `glibc`-based image:
+
+```bash
+$ git clone https://github.com/ricardbejarano/nginx
+$ cd nginx
+$ docker build -t nginx:glibc -f glibc/Dockerfile .
+```
+
+To build the `musl`-based image:
+
+```bash
+$ git clone https://github.com/ricardbejarano/nginx
+$ cd nginx
+$ docker build -t nginx:musl -f musl/Dockerfile .
+```
+
+
 ## Filesystem
 
 The images' contents are:

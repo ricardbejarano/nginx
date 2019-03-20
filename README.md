@@ -14,7 +14,7 @@ Available at [`ricardbejarano/nginx`](https://hub.docker.com/r/ricardbejarano/ng
 
 ## Features
 
-* Super tiny (`glibc`-based is `~13MB` and `musl`-based is `~12.3MB`)
+* Super tiny (`glibc`-based is `~13MB` and `musl`-based is `~12.5MB`)
 * Built from source, including libraries
 * Built from `scratch`, see the [Filesystem](#Filesystem) section below for an exhaustive list of the image's contents
 * Included [TLS1.3](https://tools.ietf.org/html/rfc8446) protocol support (with [OpenSSL](https://www.openssl.org/))
@@ -90,9 +90,6 @@ Based on the [musl](https://www.musl-libc.org/) implementation of `libc`.
 │   │   ├── mime.types
 │   │   └── nginx.conf
 │   └── passwd
-├── lib/
-│   ├── ld-musl-x86_64.so.1
-│   └── libssl.so.1.1
 ├── nginx
 └── tmp/
     └── .keep

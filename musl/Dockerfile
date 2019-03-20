@@ -12,6 +12,8 @@ ARG OPENSSL_CHECKSUM="5c557b023230413dfb0756f3137a13e6d726838ccd1430888ad15bfb2b
 ARG NGINX_VERSION="1.15.9"
 ARG NGINX_CHECKSUM="e4cfba989bba614cd53f3f406ac6da9f05977d6b1296e5d20a299f10c2d7ae43"
 ARG NGINX_CONFIG="\
+    --with-cc-opt='-static' \
+    --with-ld-opt='-static' \
     --sbin-path=/nginx \
     --conf-path=/etc/nginx/nginx.conf \
     --pid-path=/tmp/nginx.pid \
@@ -59,9 +61,6 @@ FROM scratch
 
 COPY rootfs /
 
-COPY --from=build /lib/ld-musl-x86_64.so.1 \
-                  /lib/libssl.so.1.1 \
-                  /lib/
 COPY --from=build /tmp/nginx/objs/nginx /nginx
 
 STOPSIGNAL SIGTERM

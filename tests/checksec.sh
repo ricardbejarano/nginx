@@ -18,11 +18,11 @@ usage() {
 }
 
 checksec() {
-	printf "Downloading $1..."
+	printf "Downloading %s..." "$1"
 	docker pull "$1" >/dev/null
 	echo "Done!"
 
-	printf "Extracting $1:$2..."
+	printf "Extracting %s:%s..." "$1" "$2"
 	image_container="$(docker create "$1")"
 	executable_file="$(mktemp .checksec-XXXXXXXX)"
 	docker cp "$image_container":"$2" "$executable_file"
@@ -34,7 +34,7 @@ checksec() {
 		--interactive \
 		--tty \
 		--rm \
-		--volume "$PWD/$executable_file":"/tmp/$executable_file" \
+		--volume "$PWD/$executable_file:/tmp/$executable_file" \
 		debian \
 			bash \
 				-c "\

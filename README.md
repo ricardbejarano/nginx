@@ -7,9 +7,9 @@ Available at [`ricardbejarano/nginx`](https://hub.docker.com/r/ricardbejarano/ng
 
 ## Tags
 
-[`1.15.12-glibc`, `1.15.12`, `glibc`, `latest` *(glibc/Dockerfile)*](https://github.com/ricardbejarano/nginx/blob/master/glibc/Dockerfile)
+[`1.15.11-glibc`, `1.15.11`, `glibc`, `latest` *(glibc/Dockerfile)*](https://github.com/ricardbejarano/nginx/blob/master/glibc/Dockerfile)
 
-[`1.15.12-musl`, `musl` *(musl/Dockerfile)*](https://github.com/ricardbejarano/nginx/blob/master/musl/Dockerfile)
+[`1.15.11-musl`, `musl` *(musl/Dockerfile)*](https://github.com/ricardbejarano/nginx/blob/master/musl/Dockerfile)
 
 
 ## Features

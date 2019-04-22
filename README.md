@@ -17,7 +17,6 @@ Available at [`ricardbejarano/nginx`](https://hub.docker.com/r/ricardbejarano/ng
 * Super tiny (`glibc`-based is `~13.2MB` and `musl`-based is `~12.5MB`)
 * Built from source, including libraries
 * Built `FROM scratch`, see the [Filesystem](#Filesystem) section below for an exhaustive list of the image's contents
-* Included [TLS1.3](https://tools.ietf.org/html/rfc8446) protocol support (with [OpenSSL](https://www.openssl.org/))
 * Reduced attack surface (no `bash`, no UNIX tools, no package manager...)
 * Built with exploit mitigations enabled (see [Security](#Security))
 
@@ -27,17 +26,13 @@ Available at [`ricardbejarano/nginx`](https://hub.docker.com/r/ricardbejarano/ng
 To build the `glibc`-based image:
 
 ```bash
-$ git clone https://github.com/ricardbejarano/nginx
-$ cd nginx
-$ docker build -t nginx:glibc -f glibc/Dockerfile .
+docker build -t nginx:glibc -f glibc/Dockerfile .
 ```
 
 To build the `musl`-based image:
 
 ```bash
-$ git clone https://github.com/ricardbejarano/nginx
-$ cd nginx
-$ docker build -t nginx:musl -f musl/Dockerfile .
+docker build -t nginx:musl -f musl/Dockerfile .
 ```
 
 
@@ -103,7 +98,7 @@ The images' contents are:
 
 ### `glibc`
 
-Based on the [glibc](https://www.gnu.org/software/libc/) implementation of `libc`.
+Based on the [glibc](https://www.gnu.org/software/libc/) implementation of `libc`. Dynamically linked.
 
 ```
 /
@@ -134,7 +129,7 @@ Based on the [glibc](https://www.gnu.org/software/libc/) implementation of `libc
 
 ### `musl`
 
-Based on the [musl](https://www.musl-libc.org/) implementation of `libc`.
+Based on the [musl](https://www.musl-libc.org/) implementation of `libc`. Statically linked.
 
 ```
 /

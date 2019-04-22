@@ -53,7 +53,7 @@ RUN cd /tmp && \
 
 RUN cd /tmp/nginx && \
     apt update && \
-    apt install -y git gcc g++ make && \
+    apt install -y gcc g++ perl make && \
     ./configure $NGINX_CONFIG && \
     make
 

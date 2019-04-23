@@ -3,7 +3,7 @@
 usage() {
 	echo "usage: checksec.sh docker_image executable_path"
 	echo ""
-	echo "Docker-based wrapper for checksec.sh."
+	echo "Container-based wrapper for checksec.sh."
 	echo "Requires a running Docker daemon."
 	echo ""
 	echo "Example:"
@@ -13,7 +13,7 @@ usage() {
 	echo "  Extracts the '/nginx' binary from the 'ricardbejarano/nginx:glibc' image,"
 	echo "  downloads checksec (github.com/slimm609/checksec.sh) and runs it on the"
 	echo "  binary."
-	echo "  Everything runs inside Docker containers."
+	echo "  Everything runs inside containers."
 	exit 1
 }
 

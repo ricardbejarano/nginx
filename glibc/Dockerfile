@@ -52,10 +52,10 @@ RUN cd /tmp && \
     mv /tmp/nginx-$NGINX_VERSION /tmp/nginx
 
 RUN cd /tmp/nginx && \
-    apt update && \
-    apt install -y gcc g++ perl make && \
-    ./configure $NGINX_CONFIG && \
-    make
+      apt update && \
+      apt install -y gcc g++ perl make && \
+      ./configure $NGINX_CONFIG && \
+      make
 
 
 FROM scratch

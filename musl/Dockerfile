@@ -52,9 +52,9 @@ RUN cd /tmp && \
     mv /tmp/nginx-$NGINX_VERSION /tmp/nginx
 
 RUN cd /tmp/nginx && \
-    apk add gcc g++ perl make linux-headers && \
-    ./configure $NGINX_CONFIG && \
-    make
+      apk add gcc g++ perl make linux-headers && \
+      ./configure $NGINX_CONFIG && \
+      make
 
 
 FROM scratch

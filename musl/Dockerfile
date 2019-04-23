@@ -59,9 +59,9 @@ RUN cd /tmp/nginx && \
 
 FROM scratch
 
-COPY rootfs /
-
 COPY --from=build /tmp/nginx/objs/nginx /nginx
+
+COPY rootfs /
 
 STOPSIGNAL SIGTERM
 

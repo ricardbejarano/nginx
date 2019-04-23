@@ -60,8 +60,6 @@ RUN cd /tmp/nginx && \
 
 FROM scratch
 
-COPY rootfs /
-
 COPY --from=build /lib/x86_64-linux-gnu/libc.so.6 \
                   /lib/x86_64-linux-gnu/libcrypt.so.1 \
                   /lib/x86_64-linux-gnu/libdl.so.2 \
@@ -73,6 +71,8 @@ COPY --from=build /lib/x86_64-linux-gnu/libc.so.6 \
 COPY --from=build /lib64/ld-linux-x86-64.so.2 \
                   /lib64/
 COPY --from=build /tmp/nginx/objs/nginx /nginx
+
+COPY rootfs /
 
 STOPSIGNAL SIGTERM
 

@@ -92,6 +92,11 @@ Other examples:
 - `bash tests/checksec.sh nginx /usr/sbin/nginx`
 
 
+## Volumes
+
+- Bind your **configuration file** at `/etc/nginx/nginx.conf`.
+
+
 ## Filesystem
 
 The images' contents are:

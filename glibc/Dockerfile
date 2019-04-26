@@ -76,4 +76,5 @@ COPY rootfs /
 
 STOPSIGNAL SIGTERM
 
-CMD ["/nginx", "-g", "daemon off;"]
+ENTRYPOINT ["/nginx"]
+CMD ["-g", "daemon off;"]

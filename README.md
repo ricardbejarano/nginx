@@ -2,14 +2,22 @@
 <h1 align=center>nginx (container image)</h1>
 <p align=center>Built-from-source container image of the <a href=https://nginx.org/>NGINX HTTP server</a></p>
 
-Available at [`ricardbejarano/nginx`](https://hub.docker.com/r/ricardbejarano/nginx).
-
 
 ## Tags
 
-[`1.17.0-glibc`, `1.17.0`, `glibc`, `latest` *(glibc/Dockerfile)*](https://github.com/ricardbejarano/nginx/blob/master/glibc/Dockerfile)
+### Docker Hub
 
-[`1.17.0-musl`, `musl` *(musl/Dockerfile)*](https://github.com/ricardbejarano/nginx/blob/master/musl/Dockerfile)
+Available on [Docker Hub](https://hub.docker.com) as [ricardbejarano/nginx](https://hub.docker.com/r/ricardbejarano/nginx):
+
+- [`1.17.0-glibc`, `1.17.0`, `glibc`, `master`, `latest` *(glibc/Dockerfile)*](https://github.com/ricardbejarano/nginx/blob/master/glibc/Dockerfile)
+- [`1.17.0-musl`, `musl` *(musl/Dockerfile)*](https://github.com/ricardbejarano/nginx/blob/master/musl/Dockerfile)
+
+### Quay
+
+Available on [Quay](https://quay.io) as:
+
+- [`ricardbejarano/nginx-glibc`](https://quay.io/repository/ricardbejarano/nginx-glibc), tags: [`1.17.0`, `master`, `latest` *(glibc/Dockerfile)*](https://github.com/ricardbejarano/nginx/blob/master/glibc/Dockerfile)
+- [`ricardbejarano/nginx-musl`](https://quay.io/repository/ricardbejarano/nginx-musl), tags: [`1.17.0`, `master`, `latest` *(musl/Dockerfile)*](https://github.com/ricardbejarano/nginx/blob/master/musl/Dockerfile)
 
 
 ## Features

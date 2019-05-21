@@ -7,7 +7,7 @@
 
 ### Docker Hub
 
-Available on [Docker Hub](https://hub.docker.com) as [ricardbejarano/nginx](https://hub.docker.com/r/ricardbejarano/nginx):
+Available on [Docker Hub](https://hub.docker.com) as [`ricardbejarano/nginx`](https://hub.docker.com/r/ricardbejarano/nginx):
 
 - [`1.17.0-glibc`, `1.17.0`, `glibc`, `master`, `latest` *(glibc/Dockerfile)*](https://github.com/ricardbejarano/nginx/blob/master/glibc/Dockerfile)
 - [`1.17.0-musl`, `musl` *(musl/Dockerfile)*](https://github.com/ricardbejarano/nginx/blob/master/musl/Dockerfile)

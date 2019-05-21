@@ -16,8 +16,8 @@ Available on [Docker Hub](https://hub.docker.com) as [`ricardbejarano/nginx`](ht
 
 Available on [Quay](https://quay.io) as:
 
-- [`ricardbejarano/nginx-glibc`](https://quay.io/repository/ricardbejarano/nginx-glibc), tags: [`1.17.0`, `master`, `latest` *(glibc/Dockerfile)*](https://github.com/ricardbejarano/nginx/blob/master/glibc/Dockerfile)
-- [`ricardbejarano/nginx-musl`](https://quay.io/repository/ricardbejarano/nginx-musl), tags: [`1.17.0`, `master`, `latest` *(musl/Dockerfile)*](https://github.com/ricardbejarano/nginx/blob/master/musl/Dockerfile)
+- [`quay.io/ricardbejarano/nginx-glibc`](https://quay.io/repository/ricardbejarano/nginx-glibc), tags: [`1.17.0`, `master`, `latest` *(glibc/Dockerfile)*](https://github.com/ricardbejarano/nginx/blob/master/glibc/Dockerfile)
+- [`quay.io/ricardbejarano/nginx-musl`](https://quay.io/repository/ricardbejarano/nginx-musl), tags: [`1.17.0`, `master`, `latest` *(musl/Dockerfile)*](https://github.com/ricardbejarano/nginx/blob/master/musl/Dockerfile)
 
 
 ## Features

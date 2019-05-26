@@ -74,7 +74,9 @@ COPY --from=build /tmp/nginx/objs/nginx /nginx
 
 COPY rootfs /
 
+USER nginx:nginx
+WORKDIR /
+EXPOSE 80/tcp
 STOPSIGNAL SIGTERM
-
 ENTRYPOINT ["/nginx"]
 CMD ["-g", "daemon off;"]

@@ -118,7 +118,7 @@ Based on the [glibc](https://www.gnu.org/software/libc/) implementation of `libc
 ```
 /
 ├── etc/
-│   ├── group/
+│   ├── group
 │   ├── nginx/
 │   │   ├── html/
 │   │   │   ├── 50x.html

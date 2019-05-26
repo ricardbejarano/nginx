@@ -94,7 +94,7 @@ Extracting ricardbejarano/nginx:glibc:/nginx...Done!
 Downloading checksec.sh...Done!
 Running checksec.sh:
 RELRO        STACK CANARY   NX           PIE           RPATH      RUNPATH      Symbols         FORTIFY   Fortified   Fortifiable   FILE
-Full RELRO   Canary found   NX enabled   PIE enabled   No RPATH   No RUNPATH   11563 Symbols   Yes       0           34            /tmp/.checksec-ui8eKi3Q
+Full RELRO   Canary found   NX enabled   PIE enabled   No RPATH   No RUNPATH   11570 Symbols   Yes       0           34            /tmp/.checksec-ui8eKi3Q
 Cleaning up...Done!
 ```
 

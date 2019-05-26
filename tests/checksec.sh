@@ -44,7 +44,7 @@ checksec() {
 						--silent \
 						--show-error \
 						--output /bin/checksec \
-						https://raw.githubusercontent.com/slimm609/checksec.sh/master/checksec && \
+						https://raw.githubusercontent.com/slimm609/checksec.sh/b8231ce02c0b20ace7ab6ea0bc1a5e4a1b497212/checksec && \
 					chmod +x /bin/checksec && \
 					echo 'Done!' && \
 					echo 'Running checksec.sh:' && \

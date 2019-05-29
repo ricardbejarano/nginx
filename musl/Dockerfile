@@ -17,8 +17,8 @@ ARG NGINX_CONFIG="\
     --sbin-path=/nginx \
     --conf-path=/etc/nginx/nginx.conf \
     --pid-path=/tmp/nginx.pid \
-    --http-log-path=/dev/stdout \
-    --error-log-path=/dev/stdout \
+    --http-log-path=/dev/null \
+    --error-log-path=/dev/null \
     --http-client-body-temp-path=/tmp/client_temp \
     --http-proxy-temp-path=/tmp/proxy_temp \
     --http-fastcgi-temp-path=/tmp/fastcgi_temp \
@@ -63,7 +63,6 @@ COPY --from=build /tmp/nginx/objs/nginx /nginx
 
 COPY rootfs /
 
-USER nginx:nginx
 WORKDIR /
 EXPOSE 80/tcp
 STOPSIGNAL SIGTERM

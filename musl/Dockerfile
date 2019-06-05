@@ -59,7 +59,7 @@ RUN cd /tmp/nginx && \
 
 FROM scratch
 
-COPY --from=build /tmp/nginx/objs/nginx /nginx
+COPY --from=build /tmp/nginx/objs/nginx /
 
 COPY rootfs /
 

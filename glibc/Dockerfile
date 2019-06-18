@@ -40,15 +40,14 @@ ADD https://www.openssl.org/source/openssl-$OPENSSL_VERSION.tar.gz /tmp/openssl.
 ADD https://zlib.net/zlib-$ZLIB_VERSION.tar.gz /tmp/zlib.tar.gz
 ADD https://nginx.org/download/nginx-$NGINX_VERSION.tar.gz /tmp/nginx.tar.gz
 
-RUN cd /tmp && \
-    if [ "$PCRE_CHECKSUM" != "$(sha256sum /tmp/pcre.tar.gz | awk '{print $1}')" ]; then exit 1; fi && \
-    tar xf /tmp/pcre.tar.gz && \
+RUN if [ "$PCRE_CHECKSUM" != "$(sha256sum /tmp/pcre.tar.gz | awk '{print $1}')" ]; then exit 1; fi && \
+    tar -C /tmp -xf /tmp/pcre.tar.gz && \
     if [ "$ZLIB_CHECKSUM" != "$(sha256sum /tmp/zlib.tar.gz | awk '{print $1}')" ]; then exit 1; fi && \
-    tar xf /tmp/zlib.tar.gz && \
+    tar -C /tmp -xf /tmp/zlib.tar.gz && \
     if [ "$OPENSSL_CHECKSUM" != "$(sha256sum /tmp/openssl.tar.gz | awk '{print $1}')" ]; then exit 1; fi && \
-    tar xf /tmp/openssl.tar.gz && \
+    tar -C /tmp -xf /tmp/openssl.tar.gz && \
     if [ "$NGINX_CHECKSUM" != "$(sha256sum /tmp/nginx.tar.gz | awk '{print $1}')" ]; then exit 1; fi && \
-    tar xf /tmp/nginx.tar.gz && \
+    tar -C /tmp -xf /tmp/nginx.tar.gz && \
     mv /tmp/nginx-$NGINX_VERSION /tmp/nginx
 
 RUN cd /tmp/nginx && \

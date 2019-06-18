@@ -72,7 +72,6 @@ COPY --from=build /tmp/nginx/objs/nginx /
 
 COPY rootfs /
 
-WORKDIR /
 EXPOSE 80/tcp
 STOPSIGNAL SIGTERM
 ENTRYPOINT ["/nginx"]

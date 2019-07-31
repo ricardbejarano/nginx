@@ -53,15 +53,26 @@ RUN [ "$PCRE_CHECKSUM" = "$(sha256sum /tmp/pcre.tar.gz | awk '{print $1}')" ] &&
 RUN cd /tmp/nginx && \
       apk add gcc g++ perl make linux-headers && \
       ./configure $NGINX_CONFIG && \
-      make
+      make && \
+    echo "nogroup:*:100:nobody" > /tmp/group && \
+    echo "nobody:*:100:100:::" > /tmp/passwd && \
+    mkdir -p /tmp/tmp && \
+    sed -i -e 's/listen       80;/listen 8080;/g' /tmp/nginx/conf/nginx.conf
 
 
 FROM scratch
 
-COPY --from=build /tmp/nginx/objs/nginx /
+COPY --from=build --chown=100:100 /tmp/nginx/objs/nginx /
+COPY --from=build --chown=100:100 /tmp/nginx/conf/nginx.conf \
+                                  /tmp/nginx/conf/mime.types \
+                                  /etc/nginx/
+COPY --from=build --chown=100:100 /tmp/nginx/html /usr/local/nginx/html
+COPY --from=build --chown=100:100 /tmp/tmp /tmp
+COPY --from=build --chown=100:100 /tmp/group \
+                                  /tmp/passwd \
+                                  /etc/
 
-COPY rootfs /
-
-EXPOSE 80/tcp
+USER 100:100
+EXPOSE 8080/tcp
 ENTRYPOINT ["/nginx"]
 CMD ["-g", "daemon off;"]

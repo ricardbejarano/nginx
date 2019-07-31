@@ -54,24 +54,35 @@ RUN cd /tmp/nginx && \
       apt update && \
       apt install -y gcc g++ perl make && \
       ./configure $NGINX_CONFIG && \
-      make
+      make && \
+    echo "nogroup:*:100:nobody" > /tmp/group && \
+    echo "nobody:*:100:100:::" > /tmp/passwd && \
+    mkdir -p /tmp/tmp && \
+    sed -i -e 's/listen       80;/listen 8080;/g' /tmp/nginx/conf/nginx.conf
 
 
 FROM scratch
 
-COPY --from=build /lib/x86_64-linux-gnu/libc.so.6 \
-                  /lib/x86_64-linux-gnu/libcrypt.so.1 \
-                  /lib/x86_64-linux-gnu/libdl.so.2 \
-                  /lib/x86_64-linux-gnu/libnss_files.so.2 \
-                  /lib/x86_64-linux-gnu/libnss_dns.so.2 \
-                  /lib/x86_64-linux-gnu/libpthread.so.0 \
-                  /lib/x86_64-linux-gnu/libresolv.so.2 \
-                  /lib/x86_64-linux-gnu/
-COPY --from=build /lib64/ld-linux-x86-64.so.2 /lib64/
-COPY --from=build /tmp/nginx/objs/nginx /
+COPY --from=build --chown=100:100 /tmp/nginx/objs/nginx /
+COPY --from=build --chown=100:100 /tmp/nginx/conf/nginx.conf \
+                                  /tmp/nginx/conf/mime.types \
+                                  /etc/nginx/
+COPY --from=build --chown=100:100 /tmp/nginx/html /usr/local/nginx/html
+COPY --from=build --chown=100:100 /tmp/tmp /tmp
+COPY --from=build --chown=100:100 /lib/x86_64-linux-gnu/libc.so.6 \
+                                  /lib/x86_64-linux-gnu/libcrypt.so.1 \
+                                  /lib/x86_64-linux-gnu/libdl.so.2 \
+                                  /lib/x86_64-linux-gnu/libnss_files.so.2 \
+                                  /lib/x86_64-linux-gnu/libnss_dns.so.2 \
+                                  /lib/x86_64-linux-gnu/libpthread.so.0 \
+                                  /lib/x86_64-linux-gnu/libresolv.so.2 \
+                                  /lib/x86_64-linux-gnu/
+COPY --from=build --chown=100:100 /lib64/ld-linux-x86-64.so.2 /lib64/
+COPY --from=build --chown=100:100 /tmp/group \
+                                  /tmp/passwd \
+                                  /etc/
 
-COPY rootfs /
-
-EXPOSE 80/tcp
+USER 100:100
+EXPOSE 8080/tcp
 ENTRYPOINT ["/nginx"]
 CMD ["-g", "daemon off;"]

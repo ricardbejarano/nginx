@@ -52,9 +52,6 @@ Based on the [glibc](https://www.gnu.org/software/libc/) implementation of `libc
 /
 ├── etc/
 │   ├── group
-│   ├── nginx/
-│   │   ├── mime.types
-│   │   └── nginx.conf
 │   └── passwd
 ├── lib/
 │   └── x86_64-linux-gnu/
@@ -68,13 +65,7 @@ Based on the [glibc](https://www.gnu.org/software/libc/) implementation of `libc
 ├── lib64/
 │   └── ld-linux-x86-64.so.2
 ├── nginx
-├── tmp/
-└── usr/
-    └── local/
-        └── nginx/
-            └── html/
-                ├── 50x.html
-                └── index.html
+└── tmp/
 ```
 
 ### `musl`
@@ -85,18 +76,9 @@ Based on the [musl](https://www.musl-libc.org/) implementation of `libc`. Static
 /
 ├── etc/
 │   ├── group
-│   ├── nginx/
-│   │   ├── mime.types
-│   │   └── nginx.conf
 │   └── passwd
 ├── nginx
-├── tmp/
-└── usr/
-    └── local/
-        └── nginx/
-            └── html/
-                ├── 50x.html
-                └── index.html
+└── tmp/
 ```
 
 

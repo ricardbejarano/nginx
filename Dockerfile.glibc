@@ -57,17 +57,12 @@ RUN cd /tmp/nginx && \
       make && \
     echo "nogroup:*:100:nobody" > /tmp/group && \
     echo "nobody:*:100:100:::" > /tmp/passwd && \
-    mkdir -p /tmp/tmp && \
-    sed -i -e 's/listen       80;/listen 8080;/g' /tmp/nginx/conf/nginx.conf
+    mkdir -p /tmp/tmp
 
 
 FROM scratch
 
 COPY --from=build --chown=100:100 /tmp/nginx/objs/nginx /
-COPY --from=build --chown=100:100 /tmp/nginx/conf/nginx.conf \
-                                  /tmp/nginx/conf/mime.types \
-                                  /etc/nginx/
-COPY --from=build --chown=100:100 /tmp/nginx/html /usr/local/nginx/html
 COPY --from=build --chown=100:100 /tmp/tmp /tmp
 COPY --from=build --chown=100:100 /lib/x86_64-linux-gnu/libc.so.6 \
                                   /lib/x86_64-linux-gnu/libcrypt.so.1 \
@@ -83,6 +78,5 @@ COPY --from=build --chown=100:100 /tmp/group \
                                   /etc/
 
 USER 100:100
-EXPOSE 8080/tcp
 ENTRYPOINT ["/nginx"]
 CMD ["-g", "daemon off;"]

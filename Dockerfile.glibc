@@ -9,9 +9,9 @@ ARG ZLIB_CHECKSUM="c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb
 ARG OPENSSL_VERSION="1.1.1d"
 ARG OPENSSL_CHECKSUM="1e3a91bc1f9dfce01af26026f856e064eab4c8ee0a8f457b5ae30b40b8b711f2"
 
-ARG NGINX_VERSION="1.17.9"
-ARG NGINX_CHECKSUM="7dd65d405c753c41b7fdab9415cfb4bdbaf093ec6d9f7432072d52cb7bcbb689"
-ARG NGINX_CONFIG="\
+ARG VERSION="1.17.9"
+ARG CHECKSUM="7dd65d405c753c41b7fdab9415cfb4bdbaf093ec6d9f7432072d52cb7bcbb689"
+ARG CONFIG="\
     --with-cc-opt='-fstack-protector-all' \
     --with-ld-opt='-Wl,-z,relro,-z,now' \
     --sbin-path=/nginx \
@@ -38,44 +38,42 @@ ARG NGINX_CONFIG="\
 ADD https://ftp.pcre.org/pub/pcre/pcre-$PCRE_VERSION.tar.gz /tmp/pcre.tar.gz
 ADD https://www.openssl.org/source/openssl-$OPENSSL_VERSION.tar.gz /tmp/openssl.tar.gz
 ADD https://zlib.net/zlib-$ZLIB_VERSION.tar.gz /tmp/zlib.tar.gz
-ADD https://nginx.org/download/nginx-$NGINX_VERSION.tar.gz /tmp/nginx.tar.gz
+ADD https://nginx.org/download/nginx-$VERSION.tar.gz /tmp/nginx.tar.gz
 
 RUN [ "$PCRE_CHECKSUM" = "$(sha256sum /tmp/pcre.tar.gz | awk '{print $1}')" ] && \
     [ "$ZLIB_CHECKSUM" = "$(sha256sum /tmp/zlib.tar.gz | awk '{print $1}')" ] && \
     [ "$OPENSSL_CHECKSUM" = "$(sha256sum /tmp/openssl.tar.gz | awk '{print $1}')" ] && \
-    [ "$NGINX_CHECKSUM" = "$(sha256sum /tmp/nginx.tar.gz | awk '{print $1}')" ] && \
+    [ "$CHECKSUM" = "$(sha256sum /tmp/nginx.tar.gz | awk '{print $1}')" ] && \
     tar -C /tmp -xf /tmp/pcre.tar.gz && \
     tar -C /tmp -xf /tmp/zlib.tar.gz && \
     tar -C /tmp -xf /tmp/openssl.tar.gz && \
     tar -C /tmp -xf /tmp/nginx.tar.gz && \
-    mv /tmp/nginx-$NGINX_VERSION /tmp/nginx
+    apt update && \
+    apt install -y gcc g++ perl make ca-certificates && \
+    cd /tmp/nginx-$VERSION && \
+      ./configure $CONFIG && \
+      make
 
-RUN cd /tmp/nginx && \
-      apt update && \
-      apt install -y gcc g++ perl make && \
-      ./configure $NGINX_CONFIG && \
-      make && \
-    echo "nogroup:*:100:nobody" > /tmp/group && \
-    echo "nobody:*:100:100:::" > /tmp/passwd && \
-    mkdir -p /tmp/tmp
+RUN mkdir -p /rootfs/etc/ssl/certs /rootfs/lib/x86_64-linux-gnu/ /rootfs/lib64/ /rootfs/tmp && \
+    cp /tmp/nginx-$VERSION/objs/nginx /rootfs/ && \
+    cp \
+      /lib/x86_64-linux-gnu/libc.so.6 \
+      /lib/x86_64-linux-gnu/libcrypt.so.1 \
+      /lib/x86_64-linux-gnu/libdl.so.2 \
+      /lib/x86_64-linux-gnu/libnss_files.so.2 \
+      /lib/x86_64-linux-gnu/libnss_dns.so.2 \
+      /lib/x86_64-linux-gnu/libpthread.so.0 \
+      /lib/x86_64-linux-gnu/libresolv.so.2 \
+      /rootfs/lib/x86_64-linux-gnu/ && \
+    cp /lib64/ld-linux-x86-64.so.2 /rootfs/lib64/ && \
+    echo "nogroup:*:100:nobody" > /rootfs/etc/group && \
+    echo "nobody:*:100:100:::" > /rootfs/etc/passwd && \
+    cp /etc/ssl/certs/ca-certificates.crt /rootfs/etc/ssl/certs/
 
 
 FROM scratch
 
-COPY --from=build --chown=100:100 /tmp/nginx/objs/nginx /
-COPY --from=build --chown=100:100 /tmp/tmp /tmp
-COPY --from=build --chown=100:100 /lib/x86_64-linux-gnu/libc.so.6 \
-                                  /lib/x86_64-linux-gnu/libcrypt.so.1 \
-                                  /lib/x86_64-linux-gnu/libdl.so.2 \
-                                  /lib/x86_64-linux-gnu/libnss_files.so.2 \
-                                  /lib/x86_64-linux-gnu/libnss_dns.so.2 \
-                                  /lib/x86_64-linux-gnu/libpthread.so.0 \
-                                  /lib/x86_64-linux-gnu/libresolv.so.2 \
-                                  /lib/x86_64-linux-gnu/
-COPY --from=build --chown=100:100 /lib64/ld-linux-x86-64.so.2 /lib64/
-COPY --from=build --chown=100:100 /tmp/group \
-                                  /tmp/passwd \
-                                  /etc/
+COPY --from=build --chown=100:100 /rootfs /
 
 USER 100:100
 ENTRYPOINT ["/nginx"]

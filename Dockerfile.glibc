@@ -54,7 +54,7 @@ RUN [ "$PCRE_CHECKSUM" = "$(sha256sum /tmp/pcre.tar.gz | awk '{print $1}')" ] &&
       ./configure $CONFIG && \
       make
 
-RUN mkdir -p /rootfs/etc/ssl/certs /rootfs/lib/x86_64-linux-gnu/ /rootfs/lib64/ /rootfs/tmp && \
+RUN mkdir -p /rootfs/etc/ssl/certs /rootfs/lib/x86_64-linux-gnu /rootfs/lib64 /rootfs/tmp && \
     cp /tmp/nginx-$VERSION/objs/nginx /rootfs/ && \
     cp \
       /lib/x86_64-linux-gnu/libc.so.6 \

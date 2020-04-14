@@ -9,15 +9,15 @@
 
 Available on [Docker Hub](https://hub.docker.com) as [`ricardbejarano/nginx`](https://hub.docker.com/r/ricardbejarano/nginx):
 
-- [`1.17.9-glibc`, `1.17.9`, `glibc`, `master`, `latest` *(Dockerfile.glibc)*](https://github.com/ricardbejarano/nginx/blob/master/Dockerfile.glibc) (about `14MB`)
-- [`1.17.9-musl`, `musl` *(Dockerfile.musl)*](https://github.com/ricardbejarano/nginx/blob/master/Dockerfile.musl) (about `12.3MB`)
+- [`1.17.10-glibc`, `1.17.10`, `glibc`, `master`, `latest` *(Dockerfile.glibc)*](https://github.com/ricardbejarano/nginx/blob/master/Dockerfile.glibc) (about `14MB`)
+- [`1.17.10-musl`, `musl` *(Dockerfile.musl)*](https://github.com/ricardbejarano/nginx/blob/master/Dockerfile.musl) (about `12.3MB`)
 
 ### Quay
 
 Available on [Quay](https://quay.io) as:
 
-- [`quay.io/ricardbejarano/nginx`](https://quay.io/repository/ricardbejarano/nginx), [`quay.io/ricardbejarano/nginx-glibc`](https://quay.io/repository/ricardbejarano/nginx-glibc), tags: [`1.17.9`, `master`, `latest` *(Dockerfile.glibc)*](https://github.com/ricardbejarano/nginx/blob/master/Dockerfile.glibc) (about `14MB`)
-- [`quay.io/ricardbejarano/nginx-musl`](https://quay.io/repository/ricardbejarano/nginx-musl), tags: [`1.17.9`, `master`, `latest` *(Dockerfile.musl)*](https://github.com/ricardbejarano/nginx/blob/master/Dockerfile.musl) (about `12.3MB`)
+- [`quay.io/ricardbejarano/nginx`](https://quay.io/repository/ricardbejarano/nginx), [`quay.io/ricardbejarano/nginx-glibc`](https://quay.io/repository/ricardbejarano/nginx-glibc), tags: [`1.17.10`, `master`, `latest` *(Dockerfile.glibc)*](https://github.com/ricardbejarano/nginx/blob/master/Dockerfile.glibc) (about `14MB`)
+- [`quay.io/ricardbejarano/nginx-musl`](https://quay.io/repository/ricardbejarano/nginx-musl), tags: [`1.17.10`, `master`, `latest` *(Dockerfile.musl)*](https://github.com/ricardbejarano/nginx/blob/master/Dockerfile.musl) (about `12.3MB`)
 
 
 ## Features

@@ -20,7 +20,7 @@ jobs:
         run: |
           IMAGE_BUILD_CONTEXT='.'
           IMAGE_BUILD_DOCKERFILE='Dockerfile'
-          IMAGE_BUILD_PLATFORMS='linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le'
+          IMAGE_BUILD_PLATFORMS='linux/386,linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le'
 
           IMAGE_NAME="$(echo '${{ github.repository }}' | sed 's,.*/,,g' | tr '[A-Z]' '[a-z]')"
           IMAGE_VERSION="$(echo '${{ github.ref }}' | sed -e 's,.*/\(.*\),\1,')"

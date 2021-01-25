@@ -21,7 +21,7 @@ RUN [ "$(sha256sum /tmp/openssl.tar.gz | awk '{print $1}')" = "$OPENSSL_CHECKSUM
     [ "$(sha256sum /tmp/pcre.tar.gz | awk '{print $1}')" = "$PCRE_CHECKSUM" ] && \
     [ "$(sha256sum /tmp/zlib.tar.gz | awk '{print $1}')" = "$ZLIB_CHECKSUM" ] && \
     [ "$(sha256sum /tmp/nginx.tar.gz | awk '{print $1}')" = "$CHECKSUM" ] && \
-    apk add build-base ca-certificates linux-headers perl && \
+    apk add build-base ca-certificates gcc linux-headers perl && \
     tar -C /tmp -xf /tmp/openssl.tar.gz && \
     tar -C /tmp -xf /tmp/pcre.tar.gz && \
     tar -C /tmp -xf /tmp/zlib.tar.gz && \

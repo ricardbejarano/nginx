@@ -31,8 +31,8 @@ jobs:
 
           IMAGE_REGISTRY='docker.io'
           echo '${{ secrets.DOCKER_HUB_PASSWORD }}' | docker login --username '${{ secrets.DOCKER_HUB_USERNAME }}' --password-stdin "$IMAGE_REGISTRY"
-          docker buildx build --push --platform "$IMAGE_BUILD_PLATFORMS" --tag "$IMAGE_REGISTRY/${{ secrets.DOCKER_HUB_USERNAME }}/$IMAGE_NAME:$IMAGE_VERSION" --file "$IMAGE_BUILD_DOCKERFILE" "$IMAGE_BUILD_CONTEXT"
+          docker buildx build --push --platform "$IMAGE_BUILD_PLATFORMS" --progress plain --tag "$IMAGE_REGISTRY/${{ secrets.DOCKER_HUB_USERNAME }}/$IMAGE_NAME:$IMAGE_VERSION" --file "$IMAGE_BUILD_DOCKERFILE" "$IMAGE_BUILD_CONTEXT"
 
           IMAGE_REGISTRY='quay.io'
           echo '${{ secrets.REDHAT_QUAY_PASSWORD }}' | docker login --username '${{ secrets.REDHAT_QUAY_USERNAME }}' --password-stdin "$IMAGE_REGISTRY"
-          docker buildx build --push --platform "$IMAGE_BUILD_PLATFORMS" --tag "$IMAGE_REGISTRY/${{ secrets.REDHAT_QUAY_USERNAME }}/$IMAGE_NAME:$IMAGE_VERSION" --file "$IMAGE_BUILD_DOCKERFILE" "$IMAGE_BUILD_CONTEXT"
+          docker buildx build --push --platform "$IMAGE_BUILD_PLATFORMS" --progress plain --tag "$IMAGE_REGISTRY/${{ secrets.REDHAT_QUAY_USERNAME }}/$IMAGE_NAME:$IMAGE_VERSION" --file "$IMAGE_BUILD_DOCKERFILE" "$IMAGE_BUILD_CONTEXT"

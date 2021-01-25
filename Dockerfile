@@ -75,7 +75,7 @@ RUN [ "$(sha256sum /tmp/openssl.tar.gz | awk '{print $1}')" = "$OPENSSL_CHECKSUM
         --with-compat \
         --with-pcre="/tmp/pcre-$PCRE_VERSION" \
         --with-zlib="/tmp/zlib-$ZLIB_VERSION" \
-        --with-openssl="/tmp/openssl-$OPENSSL_VERSION" && \
+        --with-openssl="/tmp/openssl-$OPENSSL_VERSION" ; \
       make
 
 RUN mkdir -p /rootfs/bin && \

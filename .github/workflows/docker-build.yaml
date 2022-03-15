@@ -5,8 +5,6 @@ on:
   push:
     branches: ["*"]
     tags: ["*"]
-  schedule:
-    - cron: "0 0 * * 0"
 
 
 jobs:
@@ -18,21 +16,16 @@ jobs:
         uses: "actions/checkout@v2"
       - name: "Prepare build environment; build; push to Docker Hub, RedHat Quay"
         run: |
-          IMAGE_BUILD_CONTEXT='.'
-          IMAGE_BUILD_DOCKERFILE='Dockerfile'
-          IMAGE_BUILD_PLATFORMS='linux/amd64'
-
-          IMAGE_NAME="$(echo '${{ github.repository }}' | sed 's,.*/,,g' | tr '[A-Z]' '[a-z]')"
-          IMAGE_VERSION="$(echo '${{ github.ref }}' | sed -e 's,.*/\(.*\),\1,')"
-          [ "$IMAGE_VERSION" == 'master' ] && IMAGE_VERSION='latest'
-          [ "$IMAGE_VERSION" == 'main' ] && IMAGE_VERSION='latest'
+          IMAGE_TAG="$(echo '${{ github.ref }}' | sed -e 's,.*/\(.*\),\1,')"
+          [ "$IMAGE_TAG" == 'master' ] && IMAGE_TAG='latest'
+          [ "$IMAGE_TAG" == 'main' ] && IMAGE_TAG='latest'
 
           docker buildx create --use
 
           IMAGE_REGISTRY='docker.io'
           echo '${{ secrets.DOCKER_HUB_PASSWORD }}' | docker login --username '${{ secrets.DOCKER_HUB_USERNAME }}' --password-stdin "$IMAGE_REGISTRY"
-          docker buildx build --push --platform "$IMAGE_BUILD_PLATFORMS" --progress plain --tag "$IMAGE_REGISTRY/${{ secrets.DOCKER_HUB_USERNAME }}/$IMAGE_NAME:$IMAGE_VERSION" --file "$IMAGE_BUILD_DOCKERFILE" "$IMAGE_BUILD_CONTEXT"
+          docker buildx build --push --platform 'linux/amd64' --tag "$IMAGE_REGISTRY/${{ github.repository }}:$IMAGE_TAG" --file Dockerfile .
 
           IMAGE_REGISTRY='quay.io'
           echo '${{ secrets.REDHAT_QUAY_PASSWORD }}' | docker login --username '${{ secrets.REDHAT_QUAY_USERNAME }}' --password-stdin "$IMAGE_REGISTRY"
-          docker buildx build --push --platform "$IMAGE_BUILD_PLATFORMS" --progress plain --tag "$IMAGE_REGISTRY/${{ secrets.REDHAT_QUAY_USERNAME }}/$IMAGE_NAME:$IMAGE_VERSION" --file "$IMAGE_BUILD_DOCKERFILE" "$IMAGE_BUILD_CONTEXT"
+          docker buildx build --push --platform 'linux/amd64' --tag "$IMAGE_REGISTRY/${{ github.repository }}:$IMAGE_TAG" --file Dockerfile .

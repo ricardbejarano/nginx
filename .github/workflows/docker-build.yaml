@@ -26,8 +26,8 @@ jobs:
 
           IMAGE_REGISTRY='docker.io'
           echo '${{ secrets.DOCKER_HUB_PASSWORD }}' | docker login --username '${{ secrets.DOCKER_HUB_USERNAME }}' --password-stdin "$IMAGE_REGISTRY"
-          docker buildx build --push --platform 'linux/amd64,linux/arm64/v8' --tag "$IMAGE_REGISTRY/${{ github.repository }}:$IMAGE_TAG" --file Dockerfile .
+          docker buildx build --push --platform 'linux/amd64' --tag "$IMAGE_REGISTRY/${{ github.repository }}:$IMAGE_TAG" --file Dockerfile .
 
           IMAGE_REGISTRY='quay.io'
           echo '${{ secrets.REDHAT_QUAY_PASSWORD }}' | docker login --username '${{ secrets.REDHAT_QUAY_USERNAME }}' --password-stdin "$IMAGE_REGISTRY"
-          docker buildx build --push --platform 'linux/amd64,linux/arm64/v8' --tag "$IMAGE_REGISTRY/${{ github.repository }}:$IMAGE_TAG" --file Dockerfile .
+          docker buildx build --push --platform 'linux/amd64' --tag "$IMAGE_REGISTRY/${{ github.repository }}:$IMAGE_TAG" --file Dockerfile .

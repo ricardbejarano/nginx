@@ -6,8 +6,8 @@ ARG CHECKSUM="64c5b975ca287939e828303fa857d22f142b251f17808dfe41733512d9cded86"
 ARG OPENSSL_VERSION="3.2.0"
 ARG OPENSSL_CHECKSUM="14c826f07c7e433706fb5c69fa9e25dab95684844b4c962a2cf1bf183eb4690e"
 
-ARG ZLIB_VERSION="1.3"
-ARG ZLIB_CHECKSUM="ff0ba4c292013dbc27530b3a81e1f9a813cd39de01ca5e0f8bf355702efa593e"
+ARG ZLIB_VERSION="1.3.1"
+ARG ZLIB_CHECKSUM="9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23"
 
 ADD https://nginx.org/download/nginx-$VERSION.tar.gz /tmp/nginx.tar.gz
 ADD https://www.openssl.org/source/openssl-$OPENSSL_VERSION.tar.gz /tmp/openssl.tar.gz

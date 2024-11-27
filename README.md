@@ -20,13 +20,13 @@
 
 Available on Docker Hub as [`docker.io/ricardbejarano/nginx`](https://hub.docker.com/r/ricardbejarano/nginx):
 
-- [`1.27.2`, `latest` *(Dockerfile)*](Dockerfile)
+- [`1.27.3`, `latest` *(Dockerfile)*](Dockerfile)
 
 ### RedHat Quay
 
 Available on RedHat Quay as [`quay.io/ricardbejarano/nginx`](https://quay.io/repository/ricardbejarano/nginx):
 
-- [`1.27.2`, `latest` *(Dockerfile)*](Dockerfile)
+- [`1.27.3`, `latest` *(Dockerfile)*](Dockerfile)
 
 
 ## Configuration

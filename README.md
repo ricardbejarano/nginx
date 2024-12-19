@@ -1,5 +1,5 @@
 <div align="center">
-	<p><img src="https://em-content.zobj.net/thumbs/160/apple/325/eagle_1f985.png" width="100px"></p>
+	<p><img src="https://em-content.zobj.net/thumbs/160/apple/391/eagle_1f985.png" width="100px"></p>
 	<h1>nginx</h1>
 	<p>Built-from-source container image of <a href="https://nginx.org/">NGINX</a></p>
 	<code>docker pull quay.io/ricardbejarano/nginx</code>

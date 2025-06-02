@@ -1,8 +1,3 @@
-FROM docker.io/alpine:3 AS fetch-nginx
-ARG NGINX_VERSION='1.28.0'
-ADD --checksum=sha256:c6b5c6b086c0df9d3ca3ff5e084c1d0ef909e6038279c71c1c3e985f576ff76a https://nginx.org/download/nginx-$NGINX_VERSION.tar.gz /tmp/nginx.tar.gz
-WORKDIR /tmp/nginx
-RUN tar -xzvf /tmp/nginx.tar.gz --strip-components=1
 
 FROM docker.io/alpine:3 AS fetch-openssl
 ARG OPENSSL_VERSION='3.5.0'
@@ -29,6 +24,8 @@ RUN apk add \
       linux-headers \
       perl-dev
 WORKDIR /tmp/nginx
+ADD --checksum=sha256:c6b5c6b086c0df9d3ca3ff5e084c1d0ef909e6038279c71c1c3e985f576ff76a https://nginx.org/download/nginx-1.28.0.tar.gz /tmp/nginx.tar.gz
+RUN tar -xzvf /tmp/nginx.tar.gz --strip-components=1
 COPY --from=fetch-nginx /tmp/nginx .
 COPY --from=fetch-openssl /tmp/openssl ./openssl
 COPY --from=fetch-pcre /tmp/pcre ./pcre

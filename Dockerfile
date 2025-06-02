@@ -97,5 +97,5 @@ RUN mkdir /rootfs \
 FROM scratch
 COPY --from=build --chown=10000:10000 /rootfs /
 USER 10000:10000
-ENTRYPOINT ["/bin/nginx"]
-CMD ["-g", "daemon off;"]
+ENTRYPOINT ['/bin/nginx']
+CMD ['-g', 'daemon off;']

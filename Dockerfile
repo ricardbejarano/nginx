@@ -25,7 +25,6 @@ RUN apk add \
 WORKDIR /tmp/nginx
 ADD --checksum=sha256:c6b5c6b086c0df9d3ca3ff5e084c1d0ef909e6038279c71c1c3e985f576ff76a https://nginx.org/download/nginx-1.28.0.tar.gz /tmp/nginx.tar.gz
 RUN tar -xzvf /tmp/nginx.tar.gz --strip-components=1
-COPY --from=fetch-nginx /tmp/nginx .
 COPY --from=fetch-openssl /tmp/openssl ./openssl
 COPY --from=fetch-pcre /tmp/pcre ./pcre
 COPY --from=fetch-zlib /tmp/zlib ./zlib

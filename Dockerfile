@@ -1,20 +1,19 @@
-
 FROM docker.io/alpine:3 AS fetch-openssl
+WORKDIR /tmp/openssl
 ARG OPENSSL_VERSION='3.5.0'
 ADD --checksum=sha256:344d0a79f1a9b08029b0744e2cc401a43f9c90acd1044d09a530b4885a8e9fc0 https://github.com/openssl/openssl/releases/download/openssl-$OPENSSL_VERSION/openssl-$OPENSSL_VERSION.tar.gz /tmp/openssl.tar.gz
-WORKDIR /tmp/openssl
 RUN tar -xzvf /tmp/openssl.tar.gz --strip-components=1
 
 FROM docker.io/alpine:3 AS fetch-pcre
+WORKDIR /tmp/pcre
 ARG PCRE_VERSION='10.45'
 ADD --checksum=sha256:0e138387df7835d7403b8351e2226c1377da804e0737db0e071b48f07c9d12ee https://github.com/PCRE2Project/pcre2/releases/download/pcre2-$PCRE_VERSION/pcre2-$PCRE_VERSION.tar.gz /tmp/pcre.tar.gz
-WORKDIR /tmp/pcre
 RUN tar -xzvf /tmp/pcre.tar.gz --strip-components=1
 
 FROM docker.io/alpine:3 AS fetch-zlib
+WORKDIR /tmp/zlib
 ARG ZLIB_VERSION='1.3.1'
 ADD --checksum=sha256:9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23 https://zlib.net/zlib-$ZLIB_VERSION.tar.gz /tmp/zlib.tar.gz
-WORKDIR /tmp/zlib
 RUN tar -xzvf /tmp/zlib.tar.gz --strip-components=1
 
 FROM docker.io/alpine:3 AS build

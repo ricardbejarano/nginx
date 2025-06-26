@@ -78,7 +78,7 @@ RUN ./configure \
       --with-openssl='openssl' \
       --with-pcre='pcre' \
       --with-zlib='zlib' \
-    && make
+    && make -j"$(nproc)"
 RUN mkdir /rootfs \
     && mkdir /rootfs/bin \
       && cp /tmp/nginx/objs/nginx /rootfs/bin/ \

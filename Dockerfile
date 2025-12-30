@@ -6,8 +6,8 @@ RUN tar -xzvf /tmp/openssl.tar.gz --strip-components=1
 
 FROM docker.io/alpine:3 AS fetch-pcre
 WORKDIR /tmp/pcre
-ARG PCRE_VERSION="10.45"
-ADD --checksum=sha256:0e138387df7835d7403b8351e2226c1377da804e0737db0e071b48f07c9d12ee https://github.com/PCRE2Project/pcre2/releases/download/pcre2-$PCRE_VERSION/pcre2-$PCRE_VERSION.tar.gz /tmp/pcre.tar.gz
+ARG PCRE_VERSION="10.47"
+ADD --checksum=sha256:c08ae2388ef333e8403e670ad70c0a11f1eed021fd88308d7e02f596fcd9dc16 https://github.com/PCRE2Project/pcre2/releases/download/pcre2-$PCRE_VERSION/pcre2-$PCRE_VERSION.tar.gz /tmp/pcre.tar.gz
 RUN tar -xzvf /tmp/pcre.tar.gz --strip-components=1
 
 FROM docker.io/alpine:3 AS fetch-zlib

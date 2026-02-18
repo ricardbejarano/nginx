@@ -12,8 +12,8 @@ RUN tar -xzvf /tmp/pcre.tar.gz --strip-components=1
 
 FROM docker.io/alpine:3 AS fetch-zlib
 WORKDIR /tmp/zlib
-ARG ZLIB_VERSION="1.3.1"
-ADD --checksum=sha256:9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23 https://zlib.net/zlib-$ZLIB_VERSION.tar.gz /tmp/zlib.tar.gz
+ARG ZLIB_VERSION="1.3.2"
+ADD --checksum=sha256:bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16 https://zlib.net/zlib-$ZLIB_VERSION.tar.gz /tmp/zlib.tar.gz
 RUN tar -xzvf /tmp/zlib.tar.gz --strip-components=1
 
 FROM docker.io/alpine:3 AS build

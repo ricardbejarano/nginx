@@ -37,12 +37,16 @@ jobs:
         uses: "docker/setup-buildx-action@v3"
 
       - name: "Build and push"
-        uses: "docker/build-push-action@v6"
+        uses: "nick-fields/retry@v3"
         with:
-          platforms: "linux/amd64"
-          push: true
-          tags: |
-            docker.io/${{ github.repository }}:latest
-            docker.io/${{ github.repository }}:${{ github.ref_name }}
-            quay.io/${{ github.repository }}:latest
-            quay.io/${{ github.repository }}:${{ github.ref_name }}
+          max_attempts: 3
+          timeout_minutes: 30
+          command: |
+            docker buildx build \
+              --platform "linux/amd64" \
+              --push \
+              --tag "docker.io/${{ github.repository }}:latest" \
+              --tag "docker.io/${{ github.repository }}:${{ github.ref_name }}" \
+              --tag "quay.io/${{ github.repository }}:latest" \
+              --tag "quay.io/${{ github.repository }}:${{ github.ref_name }}" \
+              .

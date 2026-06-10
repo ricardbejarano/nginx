@@ -1,7 +1,7 @@
 FROM docker.io/alpine:3 AS fetch-openssl
 WORKDIR /tmp/openssl
-ARG OPENSSL_VERSION="4.0.0"
-ADD --checksum=sha256:c32cf49a959c4f345f9606982dd36e7d28f7c58b19c2e25d75624d2b3d2f79ac https://github.com/openssl/openssl/releases/download/openssl-$OPENSSL_VERSION/openssl-$OPENSSL_VERSION.tar.gz /tmp/openssl.tar.gz
+ARG OPENSSL_VERSION="4.0.1"
+ADD --checksum=sha256:2db3f3a0d6ea4b59e1f094ace2c8cd536dffb87cdc39084c5afa1e6f7f37dd09 https://github.com/openssl/openssl/releases/download/openssl-$OPENSSL_VERSION/openssl-$OPENSSL_VERSION.tar.gz /tmp/openssl.tar.gz
 RUN tar -xzvf /tmp/openssl.tar.gz --strip-components=1
 
 FROM docker.io/alpine:3 AS fetch-pcre

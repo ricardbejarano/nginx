@@ -23,7 +23,7 @@ RUN apk add \
       linux-headers \
       perl-dev
 WORKDIR /tmp/nginx
-ADD --checksum=sha256:4261dc90e9e47c1c4041276e9aaa3d48ebe2e664f728e14fa95ae6c67d57a08b https://nginx.org/download/nginx-1.30.4.tar.gz /tmp/nginx.tar.gz
+ADD --checksum=sha256:e951607d534836624bd36b6b45a71dbfb055237deae3738da6bbf3270dada279 https://nginx.org/download/nginx-1.31.5.tar.gz /tmp/nginx.tar.gz
 RUN tar -xzvf /tmp/nginx.tar.gz --strip-components=1
 COPY --from=fetch-openssl /tmp/openssl ./openssl
 COPY --from=fetch-pcre /tmp/pcre ./pcre

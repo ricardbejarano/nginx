@@ -9,6 +9,7 @@
 ## Features
 
 * Compiled from source during build time
+* Bundles OpenSSL 4.0.3, PCRE2 10.49, and zlib 1.3.2
 * Built `FROM scratch`, with zero bloat
 * Reduced attack surface (no shell, no UNIX tools, no package manager...)
 * Runs as unprivileged (non-`root`) user

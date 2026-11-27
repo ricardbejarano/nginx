@@ -13,7 +13,7 @@ RUN tar -xzvf /tmp/pcre.tar.gz --strip-components=1
 FROM docker.io/alpine:3 AS fetch-zlib
 WORKDIR /tmp/zlib
 ARG ZLIB_VERSION="1.4"
-ADD --checksum=sha256:02dd159783677a749c04adbdd02b55b8a2bcc7e054f51b76b549199a916ad584 https://zlib.net/zlib-$ZLIB_VERSION.tar.gz /tmp/zlib.tar.gz
+ADD --checksum=sha256:02dd159783677a749c04adbdd02b55b8a2bcc7e054f51b76b549199a916ad584 https://github.com/madler/zlib/releases/download/v$ZLIB_VERSION/zlib-$ZLIB_VERSION.tar.gz /tmp/zlib.tar.gz
 RUN tar -xzvf /tmp/zlib.tar.gz --strip-components=1
 
 FROM docker.io/alpine:3 AS build
